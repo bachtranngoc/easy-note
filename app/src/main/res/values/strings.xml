@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Easy Note</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="add_note">Thêm mới Note/ sửa Note</string>
+    <string name="title_activity_add_note_acitivity">Add Note</string>
+    <string name="title_activity_fix_note_acitivity">Fix Note</string>
+    <string name="title_activity_custom">CustomActivity</string>
+</resources>
