@@ -39,11 +39,12 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:layout_below="@id/ll_tt"
-        android:layout_margin="7dp"
-        android:background="@drawable/border_edit_text">
+        android:background="@drawable/border_edit_text"
+        android:layout_margin="7dp">
 
         <EditText
             android:id="@+id/et_description"
@@ -53,5 +54,43 @@
             android:singleLine="false"/>
     </LinearLayout>
 
+    <FrameLayout
+        android:id="@+id/thumbnail_layout"
+        android:visibility="gone"
+        android:layout_below="@id/ll_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="7dp">
+        <ImageView
+            android:id="@+id/captured_photo_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/audio_layout"
+        android:visibility="gone"
+        android:layout_below="@id/ll_content"
+        android:layout_toRightOf="@id/thumbnail_layout"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="7dp">
+        <ImageView
+            android:id="@+id/recorded_audio_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/audio"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_delete"
+            android:layout_gravity="bottom|right"
+            />
+    </FrameLayout>
 
 </RelativeLayout>

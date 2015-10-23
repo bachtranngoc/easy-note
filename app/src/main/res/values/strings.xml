@@ -9,4 +9,6 @@
     <string name="title_activity_add_note_acitivity">Add Note</string>
     <string name="title_activity_fix_note_acitivity">Fix Note</string>
     <string name="title_activity_custom">CustomActivity</string>
+    <string name="menu_action_capture_photo">Capture photo</string>
+    <string name="menu_action_record_audio">Record audio</string>
 </resources>
