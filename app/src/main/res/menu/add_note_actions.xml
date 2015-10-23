@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/capture_photo"
+        android:title="@string/menu_action_capture_photo"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_camera"/>
+    <item
+        android:id="@+id/record_audio"
+        android:title="@string/menu_action_record_audio"
+        app:showAsAction="always"
+        android:icon="@drawable/microphone"/>
+
+</menu>
