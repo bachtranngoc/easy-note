@@ -5,19 +5,19 @@
         <item
             android:id="@+id/nav_ds_note"
             android:icon="@android:drawable/ic_menu_camera"
-            android:title="Danh sách note" />
+            android:title="@string/menu_drawer_note_list" />
         <item
             android:id="@+id/nav_ds_todo"
             android:icon="@android:drawable/ic_menu_gallery"
-            android:title="Danh sách to-do" />
+            android:title="@string/menu_drawer_todo_list" />
         <item
             android:id="@+id/nav_ql_the"
             android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Quản lý thẻ" />
+            android:title="@string/menu_drawer_tag_management" />
         <item
             android:id="@+id/nav_tuychinh"
             android:icon="@android:drawable/ic_menu_manage"
-            android:title="Tùy chọn" />
+            android:title="@string/action_settings" />
     </group>
 
 </menu>

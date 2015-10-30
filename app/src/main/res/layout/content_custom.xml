@@ -11,13 +11,13 @@
     <TextView
         android:id="@+id/tv_tc"
         android:padding="12dp"
-        android:text="Tùy chỉnh"
+        android:text="@string/action_settings"
         style="@style/add_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <CheckBox
         android:layout_below="@id/tv_tc"
-        android:text="Cho phép đồng bộ dữ liệu Note"
+        android:text="Enable synchronize notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </RelativeLayout>

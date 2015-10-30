@@ -18,23 +18,12 @@ import org.bkap.easynote.models.Note;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by nguye on 8/21/2015.
- */
 public class MyNoteAdapter extends
         ArrayAdapter<Note> {
     Activity context = null;
     ArrayList<Note> myArray = null;
     int layoutId;
 
-    /**
-     * Constructor này dùng để khởi tạo các giá trị
-     * từ MainActivity truyền vào
-     *
-     * @param context   : là Activity từ Main
-     * @param layoutId: Là layout custom do ta tạo (my_item_layout.xml)
-     * @param arr       : Danh sách nhân viên truyền từ Main
-     */
     public MyNoteAdapter(Activity context,
                          int layoutId,
                          ArrayList<Note> arr) {
@@ -97,22 +86,22 @@ public class MyNoteAdapter extends
 
                     AlertDialog.Builder alert = new AlertDialog.Builder(
                             getContext());
-                    alert.setTitle("Xóa Note!");
-                    alert.setMessage("Bạn có chắc muốn xóa note?");
-                    alert.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    alert.setTitle("Remove Note");
+                    alert.setMessage("Are you sure you want to delete note ?");
+                    alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //do your work here
                             new REMOVESyntask().execute(String.valueOf(note.getAddedDate()));
                             myArray.remove(position);
-                            Toast.makeText(getContext(), "Đã xóa \"" + note.getTitle() + "\" khỏi danh sách", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Removed \"" + note.getTitle() + "\"", Toast.LENGTH_SHORT).show();
                             MainActivity.adapter.notifyDataSetChanged();
                             dialog.dismiss();
 
                         }
                     });
-                    alert.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

@@ -33,7 +33,7 @@
             android:id="@+id/et_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tiêu đề"
+            android:hint="@string/activity_add_note_title"
             android:maxLines="1"
             android:singleLine="true" />
     </LinearLayout>
@@ -50,9 +50,10 @@
             android:id="@+id/et_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nội dung"
+            android:hint="@string/activity_add_note_content"
             android:singleLine="false"/>
     </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/thumbnail_layout"
@@ -64,7 +65,8 @@
         <ImageView
             android:id="@+id/captured_photo_thumbnail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

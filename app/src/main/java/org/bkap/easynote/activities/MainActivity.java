@@ -27,6 +27,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+//    public static final String EXTRA_NOTE_ACTION = "note action";
+//    public static final String ACTION_ADD_NOTE = "add note";
+//    public static final String ACTION_EDIT_NOTE = "edit note";
     static ArrayList<Note> listNote;
     ListView lv, lv_dialog;
     static MyNoteAdapter adapter=null;
@@ -47,10 +50,9 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Tạo Intent để mở ResultActivity
-                Intent myIntent = new Intent(MainActivity.this, AddNoteAcitivity.class);
-                //Mở Activity ResultActivity
-                startActivity(myIntent);
+                Intent addNoteIntent = new Intent(MainActivity.this, AddNoteAcitivity.class);
+//                addNoteIntent.putExtra(EXTRA_NOTE_ACTION, ACTION_ADD_NOTE);
+                startActivity(addNoteIntent);
             }
         });
 
@@ -101,7 +103,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    // My Asynctask_tracuu tab3
     private class mNoteSyncTask extends AsyncTask<String, Void, ArrayList<Note>> {
         long time_1, time_2;
 
@@ -109,23 +110,15 @@ public class MainActivity extends AppCompatActivity
         protected ArrayList<Note> doInBackground(String... params) {
             MyDatabase db = new MyDatabase(getApplication());
             Log.d("Insert: ", "Inserting ..");
-            // Reading all contacts
             Log.d("Reading: ", "Reading all Note...");
 
             listNote = db.getNote();
 
             for (Note note : listNote) {
                 String log = "Title: " + note.getTitle() + ", Description: " + note.getContent() + ", Date: " + note.getAddedDate();
-                // Writing Contacts to log
                 Log.d("READ Note: ", log);
 
             }
-//            Collections.sort(grammar, new Comparator<Grammar>() {
-//                @Override
-//                public int compare(Grammar lhs, Grammar rhs) {
-//                    return lhs.getmStruct().compareTo(rhs.getmStruct());
-//                }
-//            });
 
             return listNote;
         }
@@ -153,35 +146,28 @@ public class MainActivity extends AppCompatActivity
         }
         adapter = new MyNoteAdapter(this, R.layout.custom_list_note, listNote);
         lv.setAdapter(adapter);
-//                                    tv_mMean.setText("");
-//                                    lv.setVisibility(View.VISIBLE);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//                                            lv.setVisibility(View.GONE);
-//                                            String vMean = vija.get(position).getmMean().toString();
-//                                            tv_mMean.setText(vMean);
-//                                Toast.makeText(getContext(), vMean, Toast.LENGTH_SHORT).show();
                 if (isLong) return;
-                Intent myIntent = new Intent(getApplicationContext(), CustomNoteAcitivity.class);
-                //Khai báo Bundle
+                Intent updateNoteIntent = new Intent(getApplicationContext(), CustomNoteAcitivity.class);
                 Bundle bundle = new Bundle();
 
                 String title = listNote.get(position).getTitle();
                 String des = listNote.get(position).getContent();
+                String image = listNote.get(position).getImage();
+                String sound = listNote.get(position).getSound();
+                String addedTime = String.valueOf(listNote.get(position).getAddedDate());
                 int mPosition = position;
-//
-                //đưa dữ liệu riêng lẻ vào Bundle
+
                 bundle.putString("title", title);
                 bundle.putString("des", des);
-                bundle.putInt("mPosition", mPosition);
-
-//
-                //Đưa Bundle vào Intent
-                myIntent.putExtra("customNote", bundle);
-//                Mở Activity ResultActivity
-                startActivity(myIntent);
+                bundle.putString("image", image);
+                bundle.putString("sound", sound);
+                bundle.putString("addedTime", addedTime);
+                updateNoteIntent.putExtra("customNote", bundle);
+                startActivity(updateNoteIntent);
 
             }
         });
@@ -220,7 +206,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void showdialogDelete() {
-        // custom dialog
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.custom_dialog);
@@ -245,14 +230,12 @@ public class MainActivity extends AppCompatActivity
         return deleteList;
     }
 
-    //remove 1
     private class REMOVESyntask extends AsyncTask<String, Void, Void> {
 
         @Override
         protected Void doInBackground(String... params) {
             MyDatabase db = new MyDatabase(getApplicationContext());
 
-            // Reading all contacts
             Log.d("REMOVING: ", "REMOVING one...");
 
             db.deleteNote(params[0]);
@@ -260,14 +243,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    //remove 1
     private class REMOVEALLSyntask extends AsyncTask<String, Void, Void> {
 
         @Override
         protected Void doInBackground(String... params) {
             MyDatabase db = new MyDatabase(getApplicationContext());
 
-            // Reading all contacts
             Log.d("REMOVING: ", "REMOVING All...");
 
             db.deleteAllNote();

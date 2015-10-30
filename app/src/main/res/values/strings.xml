@@ -5,10 +5,15 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="add_note">Thêm mới Note/ sửa Note</string>
+    <string name="add_note">Add/Edit Note</string>
     <string name="title_activity_add_note_acitivity">Add Note</string>
-    <string name="title_activity_fix_note_acitivity">Fix Note</string>
+    <string name="activity_add_note_title">Title</string>
+    <string name="activity_add_note_content">Content</string>
+    <string name="title_activity_fix_note_acitivity">Add/Edit Note</string>
     <string name="title_activity_custom">CustomActivity</string>
     <string name="menu_action_capture_photo">Capture photo</string>
     <string name="menu_action_record_audio">Record audio</string>
+    <string name="menu_drawer_note_list">Note list</string>
+    <string name="menu_drawer_todo_list">Todo list</string>
+    <string name="menu_drawer_tag_management">Tag management</string>
 </resources>

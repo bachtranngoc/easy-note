@@ -24,7 +24,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<Note> listNote = new ArrayList<Note>();
         Note mNote;
-        String mTitle, mDes;
+        String mTitle, mDes, mImage;
         long mDate;
         String query = "select * from note";
         Log.d("mQuery", query);
@@ -37,9 +37,10 @@ public class MyDatabase extends SQLiteAssetHelper {
             mTitle = cursor.getString(cursor.getColumnIndex("title"));
             mDes = cursor.getString(cursor.getColumnIndex("content"));
             mDate = cursor.getLong(cursor.getColumnIndex("addedTime"));
-
+            mImage = cursor.getString(cursor.getColumnIndex("image"));
 
             mNote = new Note(mTitle, mDes, mDate);
+            mNote.setImage(mImage);
 
             listNote.add(mNote);
             cursor.moveToNext();
@@ -52,30 +53,31 @@ public class MyDatabase extends SQLiteAssetHelper {
         return listNote;
     }
 
-    public void setNote(String title, String descrip, long date) {
+    public void insertNote(Note note) {
         SQLiteDatabase db = getReadableDatabase();
 //        String sql_Query = "INSERT INTO note(title, content, addedTime) VALUES('"+title+"','"+descrip+"',"+date+")";
         ContentValues values = new ContentValues();
-        values.put("title", title);
-        values.put("content", descrip);
-        values.put("addedTime", date);
+        values.put("title", note.getTitle());
+        values.put("content", note.getContent());
+        values.put("image", note.getImage());
+        values.put("addedTime", note.getAddedDate());
         db.insert("note", null, values);
 //        db.execSQL(sql_Query);
     }
 
-    public  void updateNote(String title, String descrip, String date){
+    public void updateNote(Note note){
         SQLiteDatabase db = getReadableDatabase();
         ContentValues values = new ContentValues();
-        values.put("title", title);
-        values.put("content", descrip);
-        values.put("addedTime", date);
-        int ret = db.update("note", values, "addedTime=?", new String[]{String.valueOf(date)});
+        values.put("title", note.getTitle());
+        values.put("content", note.getContent());
+        values.put("addedTime", note.getAddedDate());
+        int ret = db.update("note", values, "addedTime = ?", new String[]{String.valueOf(note.getAddedDate())});
         if(ret==0){
             //fail
             Log.d("update", "Fail!");
-            Log.d("update", title);
-            Log.d("update", descrip);
-            Log.d("update", String.valueOf(date));
+            Log.d("update", note.getTitle());
+            Log.d("update", note.getContent());
+            Log.d("update", String.valueOf(note.getAddedDate()));
         }else {
             //success
             Log.d("update", "Success!");
