@@ -64,7 +64,7 @@ public class AddNoteAcitivity extends AppCompatActivity {
                 return true;
             }
         });
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class AddNoteAcitivity extends AppCompatActivity {
                     }
                     Log.d("AddNote", "photo exists: " + photo.exists() + "| " + photo.getAbsolutePath());
                 }
-                //save info
+               
                 Toast.makeText(getApplicationContext(), "Done!", Toast.LENGTH_SHORT).show();
                 mTitle = et_Title.getText().toString();
                 mDescription = et_Description.getText().toString();
